@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}CookWise - Home{% endblock %}
+
+{% block content %}
+    {% for slug, category in categories.items %}
+        <section class="category" style="background-image: url('{% static 'images/' %}{{ category.image }}');">
+            <h2><a href="{% url 'recipes:category_detail' slug %}">{{ category.name }}</a></h2>
+            <p>{{ category.tagline }}</p>
+        </section>
+    {% endfor %}
+{% endblock %}

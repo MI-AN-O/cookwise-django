@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}CookWise - {{ title }}{% endblock %}
+
+{% block content %}
+    <h2>{{ title }}</h2>
+    {% if tagline %}<p>{{ tagline }}</p>{% endif %}
+
+    {% for recipe in recipes %}
+        <article class="recipe">
+            <h3>{{ recipe.name }}</h3>
+            <ul>
+                {% for ingredient in recipe.ingredients %}
+                    <li>{{ ingredient }}</li>
+                {% endfor %}
+            </ul>
+            <p>{{ recipe.instructions }}</p>
+        </article>
+    {% empty %}
+        <p>No recipes in this category yet.</p>
+    {% endfor %}
+{% endblock %}

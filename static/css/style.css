@@ -1,0 +1,66 @@
+body
+{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: black;
+    color: #fff;
+}
+
+header
+{
+    background: url(../images/IMAGE6.jpg) no-repeat bottom left / 50% black;
+    padding: 1rem 0;
+    text-align: center;
+    font-size: 25px;
+    border: 2.5px solid #ccc;
+}
+
+nav ul
+{
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li
+{
+    display: inline;
+    margin: 0 1rem;
+}
+
+a
+{
+    color: #fff;
+    text-decoration: none;
+}
+
+main
+{
+    padding: 2rem;
+    min-height: 60vh;
+}
+
+.category
+{
+    padding: 30px 0;
+    border-bottom: 1px solid #ccc;
+    background-color: black;
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 25%;
+    font-size: 20px;
+}
+
+.recipe
+{
+    border-bottom: 1px solid #ccc;
+    padding: 1rem 0;
+}
+
+footer
+{
+    background-color: #333;
+    text-align: center;
+    padding: 15px;
+    opacity: 0.5;
+    font-size: 15px;
+}
