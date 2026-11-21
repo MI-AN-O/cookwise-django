@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}CookWise - {{ recipe.title }}{% endblock %}
+
+{% block content %}
+    <article class="recipe">
+        <h2>{{ recipe.title }}</h2>
+        <p class="meta">
+            <a href="{{ recipe.category.get_absolute_url }}">{{ recipe.category }}</a>
+            &middot; by {{ recipe.author.username|default:"CookWise team" }}
+            {% if recipe.prep_time %}&middot; {{ recipe.prep_time }} min{% endif %}
+        </p>
+
+        <h3>Ingredients</h3>
+        <ul>
+            {% for ingredient in recipe.ingredient_list %}
+                <li>{{ ingredient }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Instructions</h3>
+        <p>{{ recipe.instructions|linebreaksbr }}</p>
+
+        {% if user.is_authenticated and user == recipe.author %}
+            <p class="actions">
+                <a class="button" href="{% url 'recipes:recipe_update' recipe.pk %}">Edit</a>
+                <a class="button" href="{% url 'recipes:recipe_delete' recipe.pk %}">Delete</a>
+            </p>
+        {% endif %}
+    </article>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}CookWise - Sign up{% endblock %}
+
+{% block content %}
+    <div class="form-box">
+        <h2>Create an account</h2>
+        <form method="post">
+            {% csrf_token %}
+            {% include "includes/form_fields.html" %}
+            <button type="submit" class="button">Sign up</button>
+        </form>
+        <p>Already have an account? <a href="{% url 'login' %}">Log in</a></p>
+    </div>
+{% endblock %}

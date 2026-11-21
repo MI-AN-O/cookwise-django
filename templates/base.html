@@ -14,10 +14,31 @@
             <ul>
                 <li><a href="{% url 'recipes:home' %}">Home</a></li>
                 <li><a href="{% url 'recipes:recipe_list' %}">All recipes</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'recipes:recipe_create' %}">Add recipe</a></li>
+                    <li><a href="{% url 'recipes:my_recipes' %}">My recipes</a></li>
+                    <li>
+                        {# Django requires logout to be a POST request #}
+                        <form action="{% url 'logout' %}" method="post" class="inline-form">
+                            {% csrf_token %}
+                            <button type="submit" class="link-button">Log out ({{ user.username }})</button>
+                        </form>
+                    </li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Log in</a></li>
+                    <li><a href="{% url 'signup' %}">Sign up</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>
     <main>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li class="message {{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
         {% block content %}{% endblock %}
     </main>
     <footer>
